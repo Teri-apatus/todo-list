@@ -1,32 +1,35 @@
 import { useState } from 'react';
+import type { ToDoTask } from '../ToDoItem/ToDoItem';
 
 type FormProps = {
-    toDoList: string[];
-    setToDoList: (func: (toDoList: string[]) => string[]) => void;
+    setToDoList: (func: (toDoList: ToDoTask[]) => ToDoTask[]) => void;
 };
 
-export function Form(props: FormProps) {
+export function Form({ setToDoList }: FormProps) {
     const [inputValue, setInputValue] = useState('');
+
+    const onAddTaskButtonClick = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        event.preventDefault();
+        const newTask = {
+            id: Date.now(),
+            text: inputValue,
+        };
+        setToDoList((toDoList) => {
+            return [...toDoList, newTask];
+        });
+    };
 
     return (
         <form>
-            {/* проверить на onSubmit */}
             <input
                 value={inputValue}
                 onChange={(event) => {
                     setInputValue(event.target.value);
                 }}
             ></input>
-            <button
-                onClick={(event) => {
-                    event.preventDefault();
-                    props.setToDoList((toDoList) => {
-                        return [...toDoList, inputValue];
-                    });
-                }}
-            >
-                Добавить
-            </button>
+            <button onClick={onAddTaskButtonClick}>Добавить</button>
         </form>
     );
 }

@@ -1,18 +1,22 @@
 import { useState } from 'react';
 
-type ToDoItemProps = {
-    index: number;
-    toDoArrayItem: string;
-    deleteToDo: (index: number) => void;
+export type ToDoTask = {
+    id: number;
+    text: string;
 };
 
-export function ToDoItem(props: ToDoItemProps) {
+type ToDoItemProps = {
+    task: ToDoTask;
+    deleteToDo: (id: number) => void;
+};
+
+export function ToDoItem({ task, deleteToDo }: ToDoItemProps) {
     const [isEditMode, setIsEditMode] = useState(false);
-    const [inputValue, setInputValue] = useState(props.toDoArrayItem);
+    const [inputValue, setInputValue] = useState(task.text);
     const [isDone, setIsDone] = useState(false);
 
     return (
-        <li className={isDone ? 'complited' : 'in-progress'}>
+        <li className={isDone ? 'completed' : 'in-progress'}>
             <input
                 type="checkbox"
                 onChange={() => {
@@ -41,7 +45,7 @@ export function ToDoItem(props: ToDoItemProps) {
             )}{' '}
             <button
                 onClick={() => {
-                    props.deleteToDo(props.index);
+                    deleteToDo(task.id);
                 }}
             >
                 {'[X]'}
