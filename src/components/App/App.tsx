@@ -1,50 +1,40 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
-import { ToDoItem, type ToDoTask } from './ToDoItem/ToDoItem';
-import { Form } from './Form/Form';
-import { localStorageService } from './storage/localStorage';
-import { DEFAULT_TASK_LIST } from './constants';
-
-let prevSomeObj: object;
-let counter = 0;
+import { ToDoItem, type ToDoTask } from '../ToDoItem/ToDoItem';
+import { Form } from '../Form/Form';
+import { localStorageService } from '../../utils/localStorage';
+import { setInitialState } from '../../utils/setInitialState';
 
 function App() {
-    const setInitialState = () => {
-        const dataFromLS = localStorageService.get();
-        if (dataFromLS) {
-            const toDoListFromLS: ToDoTask[] = JSON.parse(dataFromLS);
-            return toDoListFromLS;
-        }
-        return DEFAULT_TASK_LIST;
-    };
-
     const [toDoList, setToDoList] =
         useState<ToDoTask[]>(setInitialState);
-
     const [inputValue, setInputValue] = useState('');
     const [isNeedFilter, setIsNeedFilter] = useState(false);
 
     useEffect(() => {
-        if (toDoList !== DEFAULT_TASK_LIST) {
-            localStorageService.set(JSON.stringify(toDoList));
-        }
+        localStorageService.set(JSON.stringify(toDoList));
     }, [toDoList]);
 
+    const editToDo = (id: number, text: string) => {
+        setToDoList((tasks) => {
+            const editedTasks: ToDoTask[] = tasks.map((task) => {
+                if (task.id === id) {
+                    return { ...task, text };
+                }
+                return task;
+            });
+            return editedTasks;
+        });
+    };
+
     const deleteToDo = (id: number) => {
-        setToDoList((toDos) => {
-            return toDos.filter((item) => item.id !== id);
+        setToDoList((tasks) => {
+            return tasks.filter((task) => task.id !== id);
         });
     };
 
     // редактировать надо по аналогии с удалением
     // key менять не нужно
-
-    console.log(
-        prevSomeObj === deleteToDo,
-        { prevSomeObj, deleteToDo },
-        counter++
-    );
-    prevSomeObj = deleteToDo;
 
     const renderingToDoList = useMemo(() => {
         return toDoList.filter((_, i) => {
@@ -68,13 +58,16 @@ function App() {
             ></input>
             <input
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => {
+                    setInputValue(e.target.value);
+                }}
             ></input>
             <ul>
                 {renderingToDoList.map((task) => (
                     <ToDoItem
                         key={task.id}
                         task={task}
+                        editToDo={editToDo}
                         deleteToDo={deleteToDo}
                     />
                 ))}

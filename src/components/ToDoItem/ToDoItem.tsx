@@ -7,10 +7,15 @@ export type ToDoTask = {
 
 type ToDoItemProps = {
     task: ToDoTask;
+    editToDo: (id: number, text: string) => void;
     deleteToDo: (id: number) => void;
 };
 
-export function ToDoItem({ task, deleteToDo }: ToDoItemProps) {
+export function ToDoItem({
+    task,
+    editToDo,
+    deleteToDo,
+}: ToDoItemProps) {
     const [isEditMode, setIsEditMode] = useState(false);
     const [inputValue, setInputValue] = useState(task.text);
     const [isDone, setIsDone] = useState(false);
@@ -34,14 +39,13 @@ export function ToDoItem({ task, deleteToDo }: ToDoItemProps) {
                 <input
                     value={inputValue}
                     onChange={(event) => {
-                        setInputValue((inputValue) => {
-                            inputValue = event.target.value;
-                            return inputValue;
-                        });
+                        const newValue = event.target.value;
+                        setInputValue(newValue);
+                        editToDo(task.id, newValue);
                     }}
                 />
             ) : (
-                <span>{inputValue}</span>
+                <span>{task.text}</span>
             )}{' '}
             <button
                 onClick={() => {
