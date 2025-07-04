@@ -3,11 +3,23 @@ import './App.css';
 import { ToDoItem, type ToDoTask } from '../ToDoItem/ToDoItem';
 import { Form } from '../Form/Form';
 import { localStorageService } from '../../utils/localStorage';
-import { setInitialState } from '../../utils/setInitialState';
+import { DEFAULT_TASK_LIST } from '../../constants';
+
+const getDataFromLS = (): ToDoTask[] => {
+    const dataFromLS = localStorageService.get();
+    if (dataFromLS && dataFromLS !== '[]') {
+        try {
+            return JSON.parse(dataFromLS);
+        } catch (e) {
+            console.log('error', e);
+        }
+    }
+    return DEFAULT_TASK_LIST;
+};
 
 function App() {
     const [toDoList, setToDoList] =
-        useState<ToDoTask[]>(setInitialState);
+        useState<ToDoTask[]>(getDataFromLS);
     const [inputValue, setInputValue] = useState('');
     const [isNeedFilter, setIsNeedFilter] = useState(false);
 
@@ -32,9 +44,6 @@ function App() {
             return tasks.filter((task) => task.id !== id);
         });
     };
-
-    // редактировать надо по аналогии с удалением
-    // key менять не нужно
 
     const renderingToDoList = useMemo(() => {
         return toDoList.filter((_, i) => {
