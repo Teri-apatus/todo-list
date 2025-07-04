@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { ToDoTask } from '../ToDoItem/ToDoItem';
 
 type FormProps = {
-    setToDoList: (func: (toDoList: ToDoTask[]) => ToDoTask[]) => void;
+    setToDoList: React.Dispatch<React.SetStateAction<ToDoTask[]>>;
 };
 
 export function Form({ setToDoList }: FormProps) {
