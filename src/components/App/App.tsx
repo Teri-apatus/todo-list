@@ -5,7 +5,7 @@ import { Form } from '../Form/Form';
 import { localStorageService } from '../../utils/localStorage';
 import { DEFAULT_TASK_LIST } from '../../constants';
 
-const getDataFromLS = (): ToDoTask[] => {
+const getTodoListSavedInLS = (): ToDoTask[] => {
     const dataFromLS = localStorageService.get();
     if (dataFromLS && dataFromLS !== '[]') {
         try {
@@ -18,8 +18,9 @@ const getDataFromLS = (): ToDoTask[] => {
 };
 
 function App() {
-    const [toDoList, setToDoList] =
-        useState<ToDoTask[]>(getDataFromLS);
+    const [toDoList, setToDoList] = useState<ToDoTask[]>(
+        getTodoListSavedInLS
+    );
     const [inputValue, setInputValue] = useState('');
     const [isNeedFilter, setIsNeedFilter] = useState(false);
 
