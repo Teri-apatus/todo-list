@@ -1,0 +1,46 @@
+.add-task-form {
+    height: 2rem;
+    display: flex;
+}
+
+.add-task-form__input {
+    box-sizing: border-box;
+    background-color: transparent;
+    font-size: 0.875rem;
+    border: 1px solid #888888;
+    color: #ffffff;
+    border-radius: 1rem;
+    padding-inline-start: 1rem;
+    width: 18rem;
+    height: 100%;
+    box-shadow: inset 4px 4px 12px rgb(0 0 0 / 50%),
+        inset -4px -4px 12px rgb(255 255 255 / 10%);
+
+    &:hover {
+        border-color: #ffffff;
+    }
+    &:focus-visible {
+        outline: 1px solid #ccc9f8;
+        outline-offset: -1px;
+    }
+}
+
+.add-task-form__button.MuiButtonBase-root {
+    transform: translateX(-2rem);
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    background-color: transparent;
+    &:hover {
+        background: radial-gradient(
+            circle,
+            rgb(255 255 255 / 25%) 0%,
+            rgba(5, 11, 10, 0) 74%
+        );
+        box-shadow: 0 0 2px 0px rgb(255 255 255 / 5%);
+    }
+    & .MuiSvgIcon-root {
+        aspect-ratio: 1/1;
+        width: 1.4rem;
+    }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="#d1c523"
+   width="800px"
+   height="800px"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="light_theme_icon.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.01875"
+     inkscape:cx="400"
+     inkscape:cy="400"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">sun</title>
+  <path
+     d="M 23.987103,14.132949 C 27.233972,12.614941 27.091277,7.4725938 30.307413,7.6745558 25.779577,4.6670783 25.895928,11.083762 20.330806,9.030116 21.545913,5.6626192 17.814976,2.1304795 20.23092,0 14.901794,1.0745695 19.522931,5.5309049 14.133434,8.0137202 12.614276,4.7669617 7.4728501,4.9096522 7.6748191,1.6936269 4.6672384,6.2213075 11.084142,6.1049599 9.030426,11.669891 5.6628134,10.454826 2.1305526,14.185635 0,11.769774 c 1.0746064,5.328943 5.5310946,0.707965 8.0139951,6.097277 -3.2468699,1.519105 -3.1041745,6.660355 -6.3203101,6.458393 4.5278359,3.007478 4.4114843,-3.409206 9.976606,-1.35556 -1.215106,3.367497 2.51583,6.899636 0.09989,9.030116 5.329126,-1.07457 0.707989,-5.530905 6.097486,-8.01372 1.519157,3.246758 6.660584,3.104068 6.458615,6.320093 3.00758,-4.527681 -3.409324,-4.411333 -1.355607,-9.976264 3.367612,1.215065 6.899873,-2.515744 9.029328,-0.09988 -1.074606,-5.328943 -5.531095,-0.707965 -8.013995,-6.097277 z"
+     id="path1"
+     style="stroke-width:1.09764" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>sun</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

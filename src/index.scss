@@ -1,0 +1,50 @@
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ccc9f8;
+}
+
+#root {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+pre,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    color: #ccc9f8;
+}
+
+button {
+    cursor: pointer;
+}
+
+.dark-theme {
+    background-color: #050b0a;
+}
