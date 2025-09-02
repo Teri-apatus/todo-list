@@ -53,10 +53,10 @@ const SwitchTheme = styled(Switch)({
             },
         },
         '& .MuiSwitch-track': {
-            background: 'linear-gradient(270deg, #1B229D, #2D38FF)',
+            background: 'linear-gradient(270deg, #3e3ea7, #4a4ac6)',
         },
         '& .Mui-checked + .MuiSwitch-track': {
-            background: 'linear-gradient(90deg, #ACA31D, #F6E729)',
+            background: 'linear-gradient(90deg, #ddd9c0, #ffffe4)',
         },
     },
 });
@@ -74,16 +74,17 @@ export function Header() {
 
     return (
         <AppBar
+            className="header"
             sx={{
                 backgroundImage:
                     'linear-gradient(90deg, #041e19, #02110e)',
-                color: '#ccc9f8',
+                color: 'inherit',
             }}
         >
             <Toolbar sx={{ gap: '10px' }}>
                 <Typography
                     variant="h6"
-                    component="span"
+                    component="h1"
                     align="left"
                     sx={{ flexGrow: 1 }}
                 >

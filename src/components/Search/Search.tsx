@@ -26,16 +26,15 @@ const SearchTextField = styled(TextField)({
         borderRadius: '1rem',
 
         '& fieldset': {
-            borderColor: '#888888',
+            borderColor: 'gray',
         },
         '& .MuiSvgIcon-root': {
             height: '0.8em',
             width: '0.8em',
-            fill: '#888888',
+            fill: 'gray',
             transition: 'none',
         },
         '& .MuiInputBase-input': {
-            color: '#ccc9f8',
             fontSize: '0.875rem',
         },
     },
@@ -44,19 +43,15 @@ const SearchTextField = styled(TextField)({
     },
     '&:hover': {
         '& .MuiInputBase-root fieldset': {
-            borderColor: '#ffffff',
+            borderColor: 'white',
         },
         '& .MuiSvgIcon-root': {
-            fill: '#ffffff',
+            fill: 'white',
         },
     },
     '& .Mui-focused': {
         '&.MuiInputBase-root fieldset': {
-            borderColor: '#ccc9f8',
             borderWidth: 1,
-        },
-        '& .MuiSvgIcon-root': {
-            fill: '#ccc9f8',
         },
     },
 });

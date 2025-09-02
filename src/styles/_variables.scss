@@ -1,0 +1,20 @@
+$action-color: #026857;
+$danger-color: #93032e;
+$edit-color: #4545b9;
+$disabled-color: gray;
+
+$done-color: $action-color;
+$save-color: $action-color;
+$cancel-color: $danger-color;
+$delete-color: $danger-color;
+
+:root {
+    --action-color: #{$action-color};
+    --check-color: var(--action-color);
+    --save-color: var(--action-color);
+    --edit-color: #{$edit-color};
+    --disabled-color: #{$disabled-color};
+    --danger-color: #{$danger-color};
+    --cancel-color: var(--danger-color);
+    --delete-color: var(--danger-color);
+}

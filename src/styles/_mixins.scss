@@ -1,0 +1,22 @@
+@mixin theme-colors($scheme) {
+    background-color: map-get($scheme, background);
+    color: map-get($scheme, text);
+
+    .todo-item__button {
+        color: map-get($scheme, text);
+    }
+    .MuiInputBase-root {
+        color: map-get($scheme, text);
+        &.Mui-focused {
+            & fieldset {
+                border-color: map-get($scheme, text);
+            }
+            & .MuiSvgIcon-root {
+                fill: map-get($scheme, text);
+            }
+        }
+    }
+    .add-task-form__input:focus-visible {
+        outline-color: map-get($scheme, text);
+    }
+}
