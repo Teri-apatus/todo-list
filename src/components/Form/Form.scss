@@ -1,3 +1,6 @@
+@import '../../styles/mixins';
+@import '../../styles/themes';
+
 .add-task-form {
     height: 2rem;
     display: flex;
@@ -8,7 +11,7 @@
     background-color: transparent;
     font-size: 0.875rem;
     border: 1px solid #888888;
-    color: #ffffff;
+    color: white;
     border-radius: 1rem;
     padding-inline-start: 1rem;
     width: 18rem;
@@ -17,10 +20,10 @@
         inset -4px -4px 12px rgb(255 255 255 / 10%);
 
     &:hover {
-        border-color: #ffffff;
+        border-color: white;
     }
     &:focus-visible {
-        outline: 1px solid #ccc9f8;
+        outline: 1px solid;
         outline-offset: -1px;
     }
 }
