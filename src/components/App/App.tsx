@@ -1,88 +1,50 @@
-import { useEffect, useMemo, useState } from 'react';
-import './App.css';
-import { ToDoItem, type ToDoTask } from '../ToDoItem/ToDoItem';
+import { useContext, useMemo } from 'react';
+import './App.scss';
+import { ToDoItem } from '../ToDoItem/ToDoItem';
 import { Form } from '../Form/Form';
-import { localStorageService } from '../../utils/localStorage';
-import { DEFAULT_TASK_LIST } from '../../constants';
+import React from 'react';
+import type { ToDoTask } from '../../entity/toDo';
+import { Header } from '../Header/Header';
+import { ToDoContext } from '../../entity/toDo/toDoContext';
+import { SearchContext } from '../../entity/toDo/searchContext';
+import { Toolbar } from '@mui/material';
 
-const getTodoListSavedInLS = (): ToDoTask[] => {
-    const dataFromLS = localStorageService.get();
-    if (dataFromLS && dataFromLS !== '[]') {
-        try {
-            return JSON.parse(dataFromLS);
-        } catch (e) {
-            console.log('error', e);
-        }
+function textFilterFunc(task: ToDoTask, searchText: string): boolean {
+    if (searchText) {
+        return task.text.includes(searchText);
     }
-    return DEFAULT_TASK_LIST;
-};
+
+    return true;
+}
 
 function App() {
-    const [toDoList, setToDoList] = useState<ToDoTask[]>(
-        getTodoListSavedInLS
-    );
-    const [inputValue, setInputValue] = useState('');
-    const [isNeedFilter, setIsNeedFilter] = useState(false);
-
-    useEffect(() => {
-        localStorageService.set(JSON.stringify(toDoList));
-    }, [toDoList]);
-
-    const editToDo = (id: number, text: string) => {
-        setToDoList((tasks) => {
-            const editedTasks: ToDoTask[] = tasks.map((task) => {
-                if (task.id === id) {
-                    return { ...task, text };
-                }
-                return task;
-            });
-            return editedTasks;
-        });
-    };
-
-    const deleteToDo = (id: number) => {
-        setToDoList((tasks) => {
-            return tasks.filter((task) => task.id !== id);
-        });
-    };
+    const { inputValue } = useContext(SearchContext);
+    const { toDoList } = useContext(ToDoContext);
 
     const renderingToDoList = useMemo(() => {
-        return toDoList.filter((_, i) => {
-            if (isNeedFilter) {
-                return i % 2 === 0;
-            }
+        return toDoList.filter((task) => {
+            const isPassTextFilter =
+                inputValue == ''
+                    ? true
+                    : textFilterFunc(task, inputValue);
 
-            return true;
+            return isPassTextFilter;
         });
-    }, [toDoList, isNeedFilter]);
+    }, [toDoList, inputValue]);
 
     return (
-        <>
-            <Form setToDoList={setToDoList} />
-            <input
-                type="checkbox"
-                checked={isNeedFilter}
-                onChange={() =>
-                    setIsNeedFilter((isNeedFilter) => !isNeedFilter)
-                }
-            ></input>
-            <input
-                value={inputValue}
-                onChange={(e) => {
-                    setInputValue(e.target.value);
-                }}
-            ></input>
-            <ul>
-                {renderingToDoList.map((task) => (
-                    <ToDoItem
-                        key={task.id}
-                        task={task}
-                        editToDo={editToDo}
-                        deleteToDo={deleteToDo}
-                    />
-                ))}
-            </ul>
-        </>
+        <React.Fragment>
+            <Header />
+            <Toolbar />
+            <main className="app-main">
+                <Form />
+                <ul className="todo-list">
+                    {renderingToDoList.map((task) => (
+                        <ToDoItem key={task.id} task={task} />
+                    ))}
+                </ul>
+            </main>
+        </React.Fragment>
     );
 }
 

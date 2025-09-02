@@ -1,0 +1,116 @@
+.todo-item {
+    display: flex;
+    align-items: start;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 10px;
+    max-height: 9rem;
+    box-shadow: 0.3rem 0.3rem 0.9rem rgb(0 0 0 / 75%),
+        -0.3rem -0.3rem 0.9rem rgb(70 155 141 / 10%);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(156, 211, 202, 0.15);
+    background-image: linear-gradient(
+        145deg,
+        rgb(70 155 141 / 15%),
+        rgb(19 42 38 / 15%)
+    );
+
+    &--completed {
+        text-decoration: line-through 2px;
+        color: #959595;
+        background: linear-gradient(
+            315deg,
+            rgb(185 211 208 / 50%),
+            rgb(42 51 49 / 50%)
+        );
+        border: 1px solid rgb(35 35 35);
+        & .edit-input {
+            color: inherit;
+        }
+    }
+
+    & .MuiButtonBase-root {
+        box-sizing: content-box;
+        color: white;
+        padding: 0;
+        height: 1.4rem;
+        & .MuiSvgIcon-root {
+            width: 1.3rem;
+            aspect-ratio: 1/1;
+        }
+    }
+}
+
+.todo-item__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+    flex-grow: 1;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    text-align: start;
+    overflow: hidden;
+    position: relative;
+    background-clip: text;
+    background-image: linear-gradient(
+        180deg,
+        #ccc9f8 70%,
+        rgba(204, 201, 248, 0.7) 70%,
+        transparent 93%
+    );
+}
+
+.todo-item__header {
+    font-size: 1rem;
+    margin-bottom: 2px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+.todo-item__text {
+    flex-grow: 1;
+    overflow: hidden;
+    color: transparent;
+    font-size: 0.85rem;
+    font-family: inherit;
+    border: 1px solid transparent;
+    border-top: none;
+    box-sizing: border-box;
+}
+
+.todo-item__input {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    background: inherit;
+    color: inherit;
+    padding: 0;
+    scrollbar-color: #ccc9f8 transparent;
+    scrollbar-width: thin;
+    font-family: inherit;
+
+    &-header {
+        font-weight: 700;
+        border-bottom: none;
+        margin-bottom: 2px;
+    }
+    &-text {
+        flex-grow: 1;
+        border-top: none;
+        font-size: 0.85rem;
+    }
+}
+
+.todo-item__button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
